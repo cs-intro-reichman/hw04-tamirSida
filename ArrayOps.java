@@ -37,7 +37,7 @@ public class ArrayOps {
         int bignum = maxValue(array);
         int secondNum= 0;
         for(int i=0; i<n; i++){
-            if(arr[i]>secondNum && arr[i]<bignum){
+            if(arr[i]>secondNum && arr[i]<=bignum){
                 secondNum=arr[i];
             }
         }
