@@ -54,7 +54,7 @@ public class ArrayOps {
     public static int secondMaxValue(int [] arr) {
         int n = arr.length;
         int [] bigarr= maxValueIndex(arr);
-        int bignum = bigarr[1];
+        int bignum = bigarr[0];
         int secondNum= 0;
         if (has2Max(arr)) {
             secondNum=bignum;
