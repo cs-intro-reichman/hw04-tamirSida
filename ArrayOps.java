@@ -1,7 +1,6 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        int [] hi = {8,8,7,1};
-       System.out.println("uniq" +uniqueValues(hi));
+     
     }
     
     public static int findMissingInt (int [] array) {
@@ -46,26 +45,85 @@ public class ArrayOps {
     }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
-        // Write your code here:
+        boolean contain = true;
+        int [] set1 = set(array1);
+        int [] set2 = set(array2);
+        if (set1.length!=set2.length) {
+           contain=false;
+        }
+        else{
+            for(int i=0;i<set1.length;i++){
+                if (!containspec(set2,set1[i])){
+                    contain=false;
+                    break;
+                }
+            }
+        } 
+        return contain;
+    }
+
+
+    public static boolean containspec(int [] set, int value){
+        for (int i=0; i<set.length;i++){
+            if (set[i]==value){
+                return true;
+            }
+        }
         return false;
     }
 
-    public static int uniqueValues(int [] array) {
-        int [] arr = array;
-        int n = arr.length;
-        for (int i=0; i<n; i++){
-            for(int j=(n-1);j>0;j--){
-                if (arr[j]==arr[i]){
-                    n--;
-                }
+
+    public static int [] set(int [] arr){
+        int [] comp = new int [countUnique(arr)];
+        int index = 0;
+        for (int i=0; i>arr.length; i++){
+            if(!contains(arr, arr[i], i)){
+                comp[index++]=arr[i];
             }
         }
-        return n;
+
+        return comp;  
+    }
+
+    public static boolean contains(int [] arr, int value, int index) {
+       for (int i =0; i<index; i++){
+        if (arr[i]==value){
+            return true;
+        }
+       }
+
+        return false;
+    }
+
+    public static int countUnique (int[] arr){
+        int count =0;
+        for (int i=0; i<arr.length; i++){
+         count = contains(arr, arr[i], i) ? count : count+ 1;  
+        }
+        return count;
     }
 
     public static boolean isSorted(int [] array) {
-        // Write your code here:
-        return false;
+        boolean sorted= (isBiggert(array)||issmaller(array));
+        return sorted;
     }
 
+    public static boolean isBiggert(int [] arr) {
+        for (int i =0; i<arr.length-1; i++){
+         if (arr[i]>arr[i+1]){
+             return false;
+         }
+        }
+         return true;
+     }
+
+     public static boolean issmaller(int [] arr) {
+        for (int i =0; i<arr.length-1; i++){
+            if (arr[i]<arr[i+1]){
+                return false;
+            }
+           }
+            return true;
+     }
+    
 }
