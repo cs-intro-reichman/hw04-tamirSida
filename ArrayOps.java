@@ -32,8 +32,8 @@ public class ArrayOps {
                 index =i;
             }
         }
-        arr[0]=bignum;
-        arr[1]=index;
+        bigindex[0]=bignum;
+        bigindex[1]=index;
         return bigindex;
     }
 
